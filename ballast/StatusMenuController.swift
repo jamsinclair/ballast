@@ -52,7 +52,7 @@ class StatusMenuController: NSObject {
     
     private func updateBalanceCorrectedItemTitle () {
         let count = UserDefaults.standard.integer(forKey: balanceCorrectedKey)
-        balanceCorrectedItem.title = "Balance has been corrected \(count) time\(count > 1 ? "s" : "")"
+        balanceCorrectedItem.title = "Balance has been corrected \(count) time\(count == 1 ? "" : "s")"
     }
     
     private func updateBalanceCorrectedCount () {

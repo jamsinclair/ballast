@@ -14,6 +14,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var balanceCorrectedItem: NSMenuItem!
     @IBOutlet weak var launchAtLoginItem: NSMenuItem!
+    @IBOutlet weak var aboutWindow: NSWindow!
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let balanceCorrectedKey = "balanceChanged"
@@ -31,6 +32,7 @@ class StatusMenuController: NSObject {
         self.centerDefaultDeviceBalance()
         self.updateBalanceCorrectedItemTitle()
         self.updateLaunchAtLoginItemState()
+
         
         let balanceTimer = Timer.scheduledTimer(timeInterval: autoCenterBalanceDelayInSeconds, target: self, selector: #selector(centerDefaultDeviceBalance), userInfo: nil, repeats: true)
         RunLoop.main.add(balanceTimer, forMode: RunLoopMode.commonModes)
@@ -76,6 +78,16 @@ class StatusMenuController: NSObject {
     
     @IBAction func centerBalanceClicked(_ sender: NSMenuItem) {
         self.centerDefaultDeviceBalance()
+    }
+    
+    @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        aboutWindow.setIsVisible(true)
+    }
+    
+    @IBAction func viewOnGitHubClicked(_ sender: NSButton) {
+        if let url = URL(string: "https://github.com/jamsinclair/ballast"), NSWorkspace.shared.open(url) {
+            print("Github link was successfully opened")
+        }
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {

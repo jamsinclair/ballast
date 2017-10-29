@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -21,11 +22,62 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="KZu-Ba-O5Y" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="ballast" customModuleProvider="target">
             <connections>
+                <outlet property="aboutWindow" destination="5y2-P8-0cD" id="5a7-qd-6m1"/>
                 <outlet property="balanceCorrectedItem" destination="8XO-As-Ozt" id="UPd-Sn-UrB"/>
                 <outlet property="launchAtLoginItem" destination="Hva-YQ-ESE" id="8ak-WP-nTn"/>
                 <outlet property="statusMenu" destination="8GQ-Qj-wfB" id="QD4-Mw-Jpd"/>
             </connections>
         </customObject>
+        <window title="About Ballast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="5y2-P8-0cD">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="88q-hL-wEd">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHh-2G-vgQ">
+                        <rect key="frame" x="116" y="177" width="248" height="39"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Ballast @ Version 1.0.0" id="aka-Ee-zkc">
+                            <font key="font" metaFont="system" size="16"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dLY-LK-kww">
+                        <rect key="frame" x="151" y="78" width="178" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="View Ballast on GitHub" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9lX-yH-fsH">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="viewOnGitHubClicked:" target="KZu-Ba-O5Y" id="gTz-BG-vdt"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrM-0a-Sr4">
+                        <rect key="frame" x="143" y="169" width="215" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Copyright (c) 2017 James Sinclair" id="vpv-lb-shv">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-a3-r5U">
+                        <rect key="frame" x="131" y="101" width="226" height="68"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Released under the terms of the   MIT License" id="7Aj-uQ-7GE">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+        </window>
         <menu id="8GQ-Qj-wfB">
             <items>
                 <menuItem title="Balance has been corrected" id="8XO-As-Ozt">
@@ -45,6 +97,12 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="SCp-cz-BtN"/>
+                <menuItem title="About" id="8Pg-AB-FRZ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="aboutClicked:" target="KZu-Ba-O5Y" id="pFh-W1-aop"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" id="H17-Wo-goO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

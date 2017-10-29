@@ -17,6 +17,8 @@ import os.log
 // - https://stackoverflow.com/questions/8950727/how-to-get-the-computers-current-volume-level
 // - https://stackoverflow.com/questions/170294/change-sound-or-other-system-preferences-in-mac-os-x
 // - https://developer.apple.com/documentation/audiotoolbox/1405208-audio_hardware_services_properti?language=objc
+// - https://stackoverflow.com/questions/6747016/how-do-i-register-for-a-notification-for-then-the-sound-volume-changes
+// - https://developer.apple.com/documentation/coreaudio/1422472-audioobjectaddpropertylistener?language=objc
 
 class AudioAPI {
     static func getDefaultDevice () -> AudioObjectID  {

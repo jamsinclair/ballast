@@ -18,7 +18,7 @@ class StatusMenuController: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let balanceCorrectedKey = "balanceChanged"
     let centerBalance: Float32 = 0.5
-    let autoCenterBalanceDelayInSeconds: TimeInterval = 1200
+    let autoCenterBalanceDelayInSeconds: TimeInterval = 600
     
     override func awakeFromNib() {
         let icon = NSImage(named: NSImage.Name(rawValue: "statusIcon"))

@@ -16,10 +16,16 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var launchAtLoginItem: NSMenuItem!
     @IBOutlet weak var aboutWindow: NSWindow!
     
+    var changeInProgress = false
+    
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let balanceCorrectedKey = "balanceChanged"
     let centerBalance: Float32 = 0.5
-    let autoCenterBalanceDelayInSeconds: TimeInterval = 600
+    let balanceObserver = BalanceObserver()
+    
+    deinit {
+        balanceObserver.stopObserving()
+    }
     
     override func awakeFromNib() {
         let icon = NSImage(named: NSImage.Name(rawValue: "statusIcon"))
@@ -28,14 +34,16 @@ class StatusMenuController: NSObject {
         statusItem.image = icon
 
         statusItem.menu = statusMenu
-        
+       
         self.centerDefaultDeviceBalance()
         self.updateBalanceCorrectedItemTitle()
         self.updateLaunchAtLoginItemState()
-
         
-        let balanceTimer = Timer.scheduledTimer(timeInterval: autoCenterBalanceDelayInSeconds, target: self, selector: #selector(centerDefaultDeviceBalance), userInfo: nil, repeats: true)
-        RunLoop.main.add(balanceTimer, forMode: RunLoopMode.commonModes)
+        // Start Observering of Balance, callback gets called whenever balance changes
+        // @Note for some reason balance event also gets invoked when volume is changed?
+        balanceObserver.startObserving(onChange: { () in
+            self.centerDefaultDeviceBalance()
+        })
     }
     
     @objc func centerDefaultDeviceBalance () {
@@ -81,7 +89,10 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        // Attempting to always bring about window to front
+        aboutWindow?.close()
         aboutWindow.setIsVisible(true)
+        aboutWindow.orderFrontRegardless()
     }
     
     @IBAction func viewOnGitHubClicked(_ sender: NSButton) {

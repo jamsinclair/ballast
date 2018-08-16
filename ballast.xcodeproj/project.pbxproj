@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A8352622125281A0087AA4E /* AudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8352612125281A0087AA4E /* AudioAPI.swift */; };
+		1A95F97821258A9B00F1E21E /* BalanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95F97721258A9B00F1E21E /* BalanceObserver.swift */; };
 		456EF1C31FA55CBB0042FB56 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */; };
 		456EF1C41FA55CBB0042FB56 /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		458662091FA1F15D00D0C6D2 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */; };
-		45D1F12E1FA2D912002707F2 /* AudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D1F12D1FA2D912002707F2 /* AudioAPI.swift */; };
 		45EC38E21F9F510200C20FBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EC38E11F9F510200C20FBB /* AppDelegate.swift */; };
 		45EC38E41F9F510200C20FBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EC38E31F9F510200C20FBB /* Assets.xcassets */; };
 		45EC38E71F9F510200C20FBB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45EC38E51F9F510200C20FBB /* MainMenu.xib */; };
@@ -31,9 +32,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A8352612125281A0087AA4E /* AudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAPI.swift; sourceTree = "<group>"; };
+		1A95F97721258A9B00F1E21E /* BalanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceObserver.swift; sourceTree = "<group>"; };
 		456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
-		45D1F12D1FA2D912002707F2 /* AudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioAPI.swift; path = /Users/jamiesinclair/playground/ballast/ballast/AudioAPI.swift; sourceTree = "<absolute>"; };
 		45EC38DE1F9F510200C20FBB /* ballast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ballast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EC38E11F9F510200C20FBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45EC38E31F9F510200C20FBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				45EC38E11F9F510200C20FBB /* AppDelegate.swift */,
-				45D1F12D1FA2D912002707F2 /* AudioAPI.swift */,
+				1A8352612125281A0087AA4E /* AudioAPI.swift */,
+				1A95F97721258A9B00F1E21E /* BalanceObserver.swift */,
 				458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */,
 				45EC38E31F9F510200C20FBB /* Assets.xcassets */,
 				45EC38E51F9F510200C20FBB /* MainMenu.xib */,
@@ -114,7 +117,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Jamie Sinclair";
 				TargetAttributes = {
 					45EC38DD1F9F510200C20FBB = {
@@ -175,8 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				458662091FA1F15D00D0C6D2 /* StatusMenuController.swift in Sources */,
+				1A95F97821258A9B00F1E21E /* BalanceObserver.swift in Sources */,
 				45EC38E21F9F510200C20FBB /* AppDelegate.swift in Sources */,
-				45D1F12E1FA2D912002707F2 /* AudioAPI.swift in Sources */,
+				1A8352622125281A0087AA4E /* AudioAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +212,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -215,6 +220,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -265,6 +271,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -272,6 +279,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

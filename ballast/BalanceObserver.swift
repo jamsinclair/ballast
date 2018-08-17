@@ -31,7 +31,6 @@ struct AudioListener {
 
 class BalanceObserver: NSObject {
     var balanceDeviceID: AudioObjectID? = nil
-    
     var balanceChangeHandler: (()->()?)? = nil
     
     override init () {
@@ -88,19 +87,20 @@ class BalanceObserver: NSObject {
     }
     
     @objc func handleNotification(notification: Notification) {
-        os_log("[BalanceWatcher]: Got us a notification", type: .debug)
+        os_log("[BalanceObserver]: Got us a notification", type: .debug)
         
         switch notification.name {
         case .audioBalanceDidChange:
-            os_log("[BalanceWatcher]: Balance notification received", type: .debug)
+            os_log("[BalanceObserver]: Balance notification received", type: .debug)
             self.balanceChangeHandler!()
             break
         case .audioOutputDeviceDidChange:
-            os_log("[BalanceWatcher]: Output Device notification received", type: .debug)
+            os_log("[BalanceObserver]: Output Device notification received", type: .debug)
+            self.balanceChangeHandler!()
             self.updateBalanceListener()
             break
         default :
-            os_log("[BalanceWatcher] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
+            os_log("[BalanceObserver] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
         }
     }
 }

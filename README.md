@@ -33,7 +33,7 @@ This free app keeps your balance stable and center and lives in your Menu Bar.
   1. Disable the app from the menu bar option
 
 - **I found a bug or problem?**\
-  Great work Sherlock! 🕵🏻‍♂️ It’s elementary. Please [open an issue](https://github.com/jamsinclair/ballast/issues/new) on this GitHub repo. Or submit a Pull Request 🙇‍♀️
+  Great work Sherlock! 🕵️‍♂️ It’s elementary. Please [open an issue](https://github.com/jamsinclair/ballast/issues/new) on this GitHub repo. Or submit a Pull Request 🙇‍♀️
 
 - **I have an idea for improvement**\
   Let me know by [opening an issue](https://github.com/jamsinclair/ballast/issues/new). All welcome!

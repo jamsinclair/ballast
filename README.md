@@ -7,8 +7,8 @@ Ever noticed your audio not quite right? Only to discover your audio balance sli
 
 This free app keeps your balance stable and center and lives in your Menu Bar. 
 
-<img width="300" alt="Ballast App Closed" src="/screenshots/ballast-closed.png">
-<img width="300" alt="Ballast App Open" src="/screenshots/ballast-open.png">
+<img width="292" alt="Ballast App Closed" src="/screenshots/ballast-closed.png">
+<img width="292" alt="Ballast App Open" src="/screenshots/ballast-open.png">
 
 ## Installation
 👉 Download DMG or Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases)

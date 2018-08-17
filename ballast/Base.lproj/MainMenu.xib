@@ -86,19 +86,19 @@
                         <action selector="disableClicked:" target="KZu-Ba-O5Y" id="U1n-fD-aBj"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Launch at login" id="Hva-YQ-ESE">
+                <menuItem title="Launch at Login" id="Hva-YQ-ESE">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="launchAtLoginClicked:" target="KZu-Ba-O5Y" id="NXo-E2-dNR"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Center balance" id="PEm-sT-13n">
+                <menuItem title="Center Balance" id="PEm-sT-13n">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="centerBalanceClicked:" target="KZu-Ba-O5Y" id="Gca-fv-kEu"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Reset correction count" id="3Va-61-gLV">
+                <menuItem title="Reset Correction Count" id="3Va-61-gLV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="resetCorrectionCountClicked:" target="KZu-Ba-O5Y" id="wdE-Mb-cAo"/>

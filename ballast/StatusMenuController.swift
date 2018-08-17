@@ -109,7 +109,7 @@ class StatusMenuController: NSObject {
             self.updateBalanceCorrectedItemTitle()
         } else {
             self.balanceObserver.stopObserving()
-            balanceCorrectedItem.title = "Ballast is disabled"
+            balanceCorrectedItem.title = "Ballast is Disabled"
         }
     }
 

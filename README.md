@@ -36,4 +36,4 @@ This free app keeps your balance stable and center and lives in your Menu Bar.
   Great work Sherlock! 🕵🏻‍♂️ It’s elementary. Please [open an issue](https://github.com/jamsinclair/ballast/issues/new) on this GitHub repo. Or submit a Pull Request 🙇‍♀️
 
 - **I have an idea for improvement**\
-  Let me know by [opening an issue]. All welcome!
+  Let me know by [opening an issue](https://github.com/jamsinclair/ballast/issues/new). All welcome!

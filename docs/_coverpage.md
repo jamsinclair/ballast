@@ -9,3 +9,5 @@
 
 [GitHub](https://github.com/jamsinclair/ballast/)
 [Download](https://github.com/jamsinclair/ballast/releases/latest)
+
+![color](#E9F2F9)

@@ -127,7 +127,7 @@ class StatusMenuController: NSObject {
 
     @IBAction func viewOnGitHubClicked(_ sender: NSButton) {
         if let url = URL(string: "https://github.com/jamsinclair/ballast"), NSWorkspace.shared.open(url) {
-            print("Github link was successfully opened")
+            os_log("Github link was successfully opened", type: .debug)
         }
     }
     

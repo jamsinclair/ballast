@@ -1,5 +1,6 @@
 # Ballast
-### Keep your audio balance from drifting!
+
+> Keep your audio balance from drifting!
 
 There is, *still*, a long standing MacOS bug where your balance may drift when volume buttons are pressed while CPU is under heavy load 🤷‍♀️.
 

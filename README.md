@@ -1,7 +1,9 @@
 # Ballast
-## Keep your audio balance from drifting!
+### Keep your audio balance from drifting!
 
 There is, *still*, a long standing MacOS bug where your balance may drift when volume buttons are pressed while CPU is under heavy load 🤷‍♀️.
+
+Ever noticed your audio not quite right? Only to discover your audio balance slightly off 😔
 
 This free app keeps your balance stable and center and lives in your Menu Bar. 
 

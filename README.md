@@ -6,7 +6,7 @@ There is, *still*, a long standing MacOS bug where your balance may drift when v
 
 Ever noticed your audio not quite right? Only to discover your audio balance slightly off 😔
 
-This free app keeps your balance stable and center and lives in your Menu Bar. 
+This free app keeps your balance stable and center. Lives in your Menu Bar.
 
 <img width="292" alt="Ballast App Closed" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-closed.png">
 <img width="292" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-open.png">

@@ -12,7 +12,7 @@ This free app keeps your balance stable and center and lives in your Menu Bar.
 <img width="292" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-open.png">
 
 ## Installation
-👉 Download DMG or Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases/latest)
+👉 Download DMG or Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases/latest) (macOS 10.12 or later required)
 
 ## Features
 - 😴 Idles in the background, only activated on system audio changes

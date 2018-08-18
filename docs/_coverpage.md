@@ -8,6 +8,6 @@
 * 📝 Keep track of how many times your balance drifts
 
 [GitHub](https://github.com/jamsinclair/ballast/)
-[Download](https://github.com/jamsinclair/ballast/releases/latest)
+[Download](https://github.com/jamsinclair/ballast/releases/latest) <br><small>(macOS 10.12 or later required)</small>
 
 ![color](#E9F2F9)

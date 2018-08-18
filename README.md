@@ -38,3 +38,22 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
 
 - **I have an idea for improvement**<br>
   Let me know by [opening an issue](https://github.com/jamsinclair/ballast/issues/new). All welcome!
+
+## Building for Development
+**Prerequisites:**
+- Xcode (Install via Appstore)
+- [Carthage](https://github.com/Carthage/Carthage#installing-carthage) - Dependency Manager
+
+**Steps**
+1. Clone this repository locally
+1. Run `carthage bootstrap` in your terminal, from project root, to install dependencies
+1. Open project with Xcode, make changes and build!
+
+**Optional**
+
+To build from command line run:
+```shell
+xcodebuild -configuration Release build
+```
+
+The built app can then be found in the project folder at `/build/release`

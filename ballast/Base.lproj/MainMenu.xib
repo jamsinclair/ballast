@@ -18,6 +18,7 @@
         <customObject id="KZu-Ba-O5Y" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="ballast" customModuleProvider="target">
             <connections>
                 <outlet property="aboutWindow" destination="5y2-P8-0cD" id="5a7-qd-6m1"/>
+                <outlet property="aboutWindowVersionText" destination="yHh-2G-vgQ" id="5gT-8K-hr0"/>
                 <outlet property="balanceCorrectedItem" destination="8XO-As-Ozt" id="UPd-Sn-UrB"/>
                 <outlet property="disableBallastItem" destination="rFj-U3-MSg" id="u3G-nO-Dj8"/>
                 <outlet property="launchAtLoginItem" destination="Hva-YQ-ESE" id="8ak-WP-nTn"/>
@@ -36,7 +37,7 @@
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHh-2G-vgQ">
                         <rect key="frame" x="116" y="177" width="248" height="39"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Ballast @ Version 1.0.0" id="aka-Ee-zkc">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" id="aka-Ee-zkc">
                             <font key="font" metaFont="system" size="16"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -56,7 +57,7 @@
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrM-0a-Sr4">
                         <rect key="frame" x="143" y="169" width="215" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Copyright (c) 2017 James Sinclair" id="vpv-lb-shv">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Copyright (c) 2018 James Sinclair" id="vpv-lb-shv">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

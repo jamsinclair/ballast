@@ -10,12 +10,22 @@ import Cocoa
 import LaunchAtLogin
 import os.log
 
+extension Bundle {
+    var releaseVersionNumber: String? {
+        return infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    var buildVersionNumber: String? {
+        return infoDictionary?["CFBundleVersion"] as? String
+    }
+}
+
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var balanceCorrectedItem: NSMenuItem!
     @IBOutlet weak var disableBallastItem: NSMenuItem!
     @IBOutlet weak var launchAtLoginItem: NSMenuItem!
     @IBOutlet weak var aboutWindow: NSWindow!
+    @IBOutlet weak var aboutWindowVersionText: NSTextField!
     
     var isEnabled = true
 
@@ -36,6 +46,8 @@ class StatusMenuController: NSObject {
 
         statusItem.menu = statusMenu
         isEnabled = true
+
+        aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
 
         self.updateLaunchAtLoginItemState()
         self.startBalanceObserving()

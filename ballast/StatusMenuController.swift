@@ -9,6 +9,7 @@
 import Cocoa
 import LaunchAtLogin
 import os.log
+import Repeat
 
 extension Bundle {
     var releaseVersionNumber: String? {
@@ -33,6 +34,7 @@ class StatusMenuController: NSObject {
     let balanceCorrectedKey = "balanceChanged"
     let centerBalance: Float32 = 0.5
     let balanceObserver = BalanceObserver()
+    let debouncedCenterDefaultDeviceBalance = Debouncer(.seconds(1))
     
     deinit {
         balanceObserver.stopObserving()
@@ -52,6 +54,10 @@ class StatusMenuController: NSObject {
         self.updateLaunchAtLoginItemState()
         self.startBalanceObserving()
         self.updateBalanceCorrectedItemTitle()
+
+        debouncedCenterDefaultDeviceBalance.callback = {
+            self.centerDefaultDeviceBalance()
+        }
     }
 
     @objc func centerDefaultDeviceBalance () {
@@ -74,7 +80,7 @@ class StatusMenuController: NSObject {
         // Start Observeration of Balance, callback gets called whenever balance changes
         // @Note for some reason balance event also gets invoked when volume is changed?
         balanceObserver.startObserving(onChange: { () in
-            self.centerDefaultDeviceBalance()
+            self.debouncedCenterDefaultDeviceBalance.call()
         })
     }
 

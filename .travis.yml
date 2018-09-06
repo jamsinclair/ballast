@@ -1,0 +1,29 @@
+os: osx
+language: swift
+install:
+- brew install carthage
+- carthage bootstrap
+script:
+- xcodebuild -configuration Release build
+before_deploy:
+- git clone https://github.com/steakknife/unsign.git
+- cd unsign && make && cd ../
+- export APP_NAME=ballast-travis-build-$TRAVIS_BRANCH.app
+- mkdir ./travis-build
+- mv ./build/Release/ballast.app ./travis-build/$APP_NAME
+# Unsign the built executable to fix "App is Damaged" errors on installation
+- "./unsign/unsign ./travis-build/$APP_NAME/Contents/MacOS/ballast"
+- rm ./travis-build/$APP_NAME/Contents/MacOS/ballast
+- mv ./travis-build/$APP_NAME/Contents/MacOS/ballast.unsigned ./travis-build/$APP_NAME/Contents/MacOS/ballast
+- zip -r ./travis-build/$APP_NAME.zip ./travis-build/$APP_NAME
+- rm -r ./travis-build/$APP_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: PAlBve7sDxlEFU/j/DROIQ+qFAowb484Q90nRpBRft70zqEGgFoBmWIv12Jq2QsPD1MKK7x0iBJ+HLiF8RYiKvm/mDC+WQ1WCTLkXCrylOi+U23Nq83TOQEZVMdoxF9ozH0oGiRZE0SQFev/smHiOVQp9deEkCU87+gO3dGWjJKuqTeN2VvKPR/0Rb0nuB/vVyR/uZreYPb3Cta4j0oAkvK2utmg08B4fL9dlavfilWLu0WFh4WAD0/VYiox1yKSPUr8CeLaKFtI6EzTE/i9rCuzmqhqtU+0EnzvTSCqyxb46htvRC+H/0pJ+we5fmys7mDfji6NbAUhRNGxFGUQ3FZ0+w/FqpK86bCzGpNL/q6Zyo2zqtPjjLt8j/IW83ZNRNrR+Vq5XCRZEvaNVOVMdaAUI8FpaZg0TrO1XYa5sXCfBY3c1iNb37bo+uM7xBDb2DRmemgt34A6ykucAGMReyTdCOhja4MTop/isHy0mM1r/wJ2+kDqZoXbSJSFQpVKhnICkEA72K+BeGHIuhiravrvcrIwlOKlDS26ozt1OSAj1A4akl+ldsHEJ6eo2zCyetHuig3sOtQOHGCSDuIWv/9KUi/qB3cVz57mEfEfvsCL/vS5vOKoyga/2TwTu9V4K4llVcXPI41yrKvuXC24R0ca7os7Pg/Q3vxJ0L+LcW4=
+  file: travis-build/$APP_NAME.zip
+  skip_cleanup: true
+  on:
+    repo: jamsinclair/ballast
+    branch: master
+    tags: true

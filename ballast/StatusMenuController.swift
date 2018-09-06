@@ -55,6 +55,9 @@ class StatusMenuController: NSObject {
         self.startBalanceObserving()
         self.updateBalanceCorrectedItemTitle()
 
+        // We want to debounce centerDefaultDeviceBalance call because:
+        // When the volume is changed rapidly it invokes multiple calls to the function
+        // Sometimes causing false positives for when the balance is incorrect
         debouncedCenterDefaultDeviceBalance.callback = {
             self.centerDefaultDeviceBalance()
         }

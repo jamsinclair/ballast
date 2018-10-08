@@ -28,8 +28,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var aboutWindow: NSWindow!
     @IBOutlet weak var aboutWindowVersionText: NSTextField!
     
-    var isEnabled = true
-
+    var isCenteringEnabled = true
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let balanceCorrectedKey = "balanceChanged"
     let centerBalance: Float32 = 0.5
@@ -47,7 +46,7 @@ class StatusMenuController: NSObject {
         statusItem.image = icon
 
         statusItem.menu = statusMenu
-        isEnabled = true
+        isCenteringEnabled = true
 
         aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
 
@@ -88,7 +87,7 @@ class StatusMenuController: NSObject {
     }
 
     private func updateBalanceCorrectedItemTitle () {
-        if (self.isEnabled) {
+        if (self.isCenteringEnabled) {
             let count = UserDefaults.standard.integer(forKey: balanceCorrectedKey)
             balanceCorrectedItem.title = "Balance has been corrected \(count) time\(count == 1 ? "" : "s")"
         }
@@ -107,7 +106,7 @@ class StatusMenuController: NSObject {
     }
     
     private func updateDisabledState () {
-        disableBallastItem.state = self.isEnabled ? NSControl.StateValue.off : NSControl.StateValue.on
+        disableBallastItem.state = self.isCenteringEnabled ? NSControl.StateValue.off : NSControl.StateValue.on
     }
 
     @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
@@ -122,10 +121,10 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func disableClicked(_ sender: NSMenuItem) {
-        self.isEnabled = !self.isEnabled
+        self.isCenteringEnabled = !self.isCenteringEnabled
         self.updateDisabledState()
 
-        if (self.isEnabled) {
+        if (self.isCenteringEnabled) {
             self.startBalanceObserving()
             self.updateBalanceCorrectedItemTitle()
         } else {

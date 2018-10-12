@@ -26,14 +26,18 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var disableBallastItem: NSMenuItem!
     @IBOutlet weak var launchAtLoginItem: NSMenuItem!
     @IBOutlet weak var aboutWindow: NSWindow!
+    @IBOutlet weak var runningInBackgroundWindow: NSWindow!
     @IBOutlet weak var aboutWindowVersionText: NSTextField!
     
     var isCenteringEnabled = true
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let balanceCorrectedKey = "balanceChanged"
     let centerBalance: Float32 = 0.5
     let balanceObserver = BalanceObserver()
     let debouncedCenterDefaultDeviceBalance = Debouncer(.seconds(1))
+
+    // User Defaults Keys
+    let balanceCorrectedKey = "balanceChanged"
+    let runInBackgroundKey = "runInBackground"
     
     deinit {
         balanceObserver.stopObserving()
@@ -49,6 +53,10 @@ class StatusMenuController: NSObject {
         isCenteringEnabled = true
 
         aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
+        
+        if (self.isRunningInBackground()) {
+            self.showRunningInBackgroundPrompt()
+        }
 
         self.updateLaunchAtLoginItemState()
         self.startBalanceObserving()
@@ -86,6 +94,10 @@ class StatusMenuController: NSObject {
         })
     }
 
+    private func toggleStatusMenuIcon (show: Bool) {
+        statusItem.isVisible = show
+    }
+
     private func updateBalanceCorrectedItemTitle () {
         if (self.isCenteringEnabled) {
             let count = UserDefaults.standard.integer(forKey: balanceCorrectedKey)
@@ -107,6 +119,15 @@ class StatusMenuController: NSObject {
     
     private func updateDisabledState () {
         disableBallastItem.state = self.isCenteringEnabled ? NSControl.StateValue.off : NSControl.StateValue.on
+    }
+    
+    private func isRunningInBackground () -> Bool {
+        return UserDefaults.standard.bool(forKey: runInBackgroundKey)
+    }
+    
+    private func toggleRunInBackground (_ toggle: Bool) {
+        UserDefaults.standard.set(toggle, forKey: runInBackgroundKey)
+        self.toggleStatusMenuIcon(show: !toggle)
     }
 
     @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
@@ -131,6 +152,24 @@ class StatusMenuController: NSObject {
             self.balanceObserver.stopObserving()
             balanceCorrectedItem.title = "Ballast is Disabled"
         }
+    }
+    
+    private func showRunningInBackgroundPrompt () {
+        // Attempting to always bring about window to front
+        runningInBackgroundWindow?.close()
+        runningInBackgroundWindow.setIsVisible(true)
+        runningInBackgroundWindow.orderFrontRegardless()
+    }
+    
+    @IBAction func keepRunningInBackgroundClicked(_ sender: NSButton) {
+        // Attempting to always bring about window to front
+        runningInBackgroundWindow?.close()
+    }
+    
+    @IBAction func stopRunningInBackgroundClicked(_ sender: NSButton) {
+        // Attempting to always bring about window to front
+        runningInBackgroundWindow?.close()
+        self.toggleRunInBackground(false)
     }
 
     @IBAction func aboutClicked(_ sender: NSMenuItem) {

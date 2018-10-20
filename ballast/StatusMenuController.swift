@@ -36,7 +36,7 @@ class StatusMenuController: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let centerBalance: Float32 = 0.5
     let balanceObserver = BalanceObserver()
-    let debouncedCenterDefaultDeviceBalance = Debouncer(.seconds(1))
+    let debouncedCenterDefaultDeviceBalance = Debouncer(.seconds(1.1))
 
     // User Defaults Keys
     let balanceCorrectedKey = "balanceChanged"

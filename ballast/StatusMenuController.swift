@@ -27,6 +27,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var launchAtLoginItem: NSMenuItem!
     @IBOutlet weak var aboutWindow: NSWindow!
     @IBOutlet weak var runningInBackgroundWindow: NSWindow!
+    @IBOutlet weak var runningInBackgroundWindowIcon: NSImageView!
     @IBOutlet weak var aboutWindowVersionText: NSTextField!
     
     var isCenteringEnabled = true
@@ -48,14 +49,17 @@ class StatusMenuController: NSObject {
         
         icon?.isTemplate = true
         statusItem.image = icon
+        runningInBackgroundWindowIcon.image = NSImage(named: NSImage.Name(rawValue: "AppIcon"))
+
 
         statusItem.menu = statusMenu
         isCenteringEnabled = true
 
         aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
         
+        // Continue hiding status menu icon, if set to run in background
         if (self.isRunningInBackground()) {
-            self.showRunningInBackgroundPrompt()
+            self.toggleRunInBackground(true);
         }
 
         self.updateLaunchAtLoginItemState()
@@ -68,6 +72,17 @@ class StatusMenuController: NSObject {
         debouncedCenterDefaultDeviceBalance.callback = {
             self.centerDefaultDeviceBalance()
         }
+    }
+
+    func isRunningInBackground () -> Bool {
+        return UserDefaults.standard.bool(forKey: runInBackgroundKey)
+    }
+
+    func showRunningInBackgroundPrompt () {
+        // Attempting to always bring about window to front
+        runningInBackgroundWindow?.close()
+        runningInBackgroundWindow.setIsVisible(true)
+        runningInBackgroundWindow.orderFrontRegardless()
     }
 
     @objc func centerDefaultDeviceBalance () {
@@ -121,10 +136,6 @@ class StatusMenuController: NSObject {
         disableBallastItem.state = self.isCenteringEnabled ? NSControl.StateValue.off : NSControl.StateValue.on
     }
     
-    private func isRunningInBackground () -> Bool {
-        return UserDefaults.standard.bool(forKey: runInBackgroundKey)
-    }
-    
     private func toggleRunInBackground (_ toggle: Bool) {
         UserDefaults.standard.set(toggle, forKey: runInBackgroundKey)
         self.toggleStatusMenuIcon(show: !toggle)
@@ -154,13 +165,6 @@ class StatusMenuController: NSObject {
         }
     }
     
-    private func showRunningInBackgroundPrompt () {
-        // Attempting to always bring about window to front
-        runningInBackgroundWindow?.close()
-        runningInBackgroundWindow.setIsVisible(true)
-        runningInBackgroundWindow.orderFrontRegardless()
-    }
-    
     @IBAction func keepRunningInBackgroundClicked(_ sender: NSButton) {
         // Attempting to always bring about window to front
         runningInBackgroundWindow?.close()
@@ -182,6 +186,10 @@ class StatusMenuController: NSObject {
     @IBAction func resetCorrectionCountClicked(_ sender: NSMenuItem) {
         UserDefaults.standard.set(0, forKey: balanceCorrectedKey)
         updateBalanceCorrectedItemTitle()
+    }
+
+    @IBAction func hideStatusMenuIcon(_ sender: NSMenuItem) {
+        toggleRunInBackground(true)
     }
 
     @IBAction func viewOnGitHubClicked(_ sender: NSButton) {

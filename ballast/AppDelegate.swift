@@ -17,4 +17,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         
     }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if (sharedStatusMenuController.isRunningInBackground()) {
+            sharedStatusMenuController.showRunningInBackgroundPrompt()
+        }
+
+        return true
+    }
 }

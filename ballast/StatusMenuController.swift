@@ -86,7 +86,7 @@ class StatusMenuController: NSObject {
     }
 
     func showRunningInBackgroundPrompt () {
-        // Attempting to always bring about window to front
+        // Attempting to always bring prompt to front
         runningInBackgroundWindow?.close()
         runningInBackgroundWindow.setIsVisible(true)
         runningInBackgroundWindow.orderFrontRegardless()
@@ -173,12 +173,10 @@ class StatusMenuController: NSObject {
     }
     
     @IBAction func keepRunningInBackgroundClicked(_ sender: NSButton) {
-        // Attempting to always bring about window to front
         runningInBackgroundWindow?.close()
     }
     
     @IBAction func stopRunningInBackgroundClicked(_ sender: NSButton) {
-        // Attempting to always bring about window to front
         runningInBackgroundWindow?.close()
         self.toggleRunInBackground(false)
     }

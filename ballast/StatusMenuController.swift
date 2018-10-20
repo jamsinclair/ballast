@@ -20,6 +20,8 @@ extension Bundle {
     }
 }
 
+var sharedStatusMenuController = StatusMenuController()
+
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var balanceCorrectedItem: NSMenuItem!
@@ -47,6 +49,11 @@ class StatusMenuController: NSObject {
     override func awakeFromNib() {
         let icon = NSImage(named: NSImage.Name(rawValue: "statusIcon"))
         
+        // Update shared instance of Status Menu Controller
+        // @todo Must be a better way of doing this
+        sharedStatusMenuController = self
+
+        // Update Icons
         icon?.isTemplate = true
         statusItem.image = icon
         runningInBackgroundWindowIcon.image = NSImage(named: NSImage.Name(rawValue: "AppIcon"))

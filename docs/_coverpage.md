@@ -1,6 +1,6 @@
 ![logo](https://raw.githubusercontent.com/jamsinclair/ballast/master/ballast/Assets.xcassets/AppIcon.appiconset/ballast-app-icon-512.png)
 
-# Ballast <small>1.0</small>
+# Ballast <small>1.1</small>
 
 > Keep your audio balance from drifting!
 

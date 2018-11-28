@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A7C470D213D6DBF00B25E04 /* Repeat.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1A7C470B213D6DBF00B25E04 /* Repeat.framework.dSYM */; };
-		1A7C470E213D6DBF00B25E04 /* Repeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; };
-		1A7C470F213D6E5300B25E04 /* Repeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; };
 		1A7C4710213D6E5300B25E04 /* Repeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A81D82D21AEF179009612BB /* Repeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; };
 		1A8352622125281A0087AA4E /* AudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8352612125281A0087AA4E /* AudioAPI.swift */; };
 		1A95F97821258A9B00F1E21E /* BalanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95F97721258A9B00F1E21E /* BalanceObserver.swift */; };
 		1AA48E192125D576006DFA25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EC38E31F9F510200C20FBB /* Assets.xcassets */; };
@@ -57,14 +56,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				456EF1C31FA55CBB0042FB56 /* LaunchAtLogin.framework in Frameworks */,
-				1A7C470F213D6E5300B25E04 /* Repeat.framework in Frameworks */,
-				1A7C470E213D6DBF00B25E04 /* Repeat.framework in Frameworks */,
+				1A81D82D21AEF179009612BB /* Repeat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A81D82C21AEF179009612BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45EC38D51F9F510200C20FBB = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +78,7 @@
 				456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */,
 				45EC38E01F9F510200C20FBB /* ballast */,
 				45EC38DF1F9F510200C20FBB /* Products */,
+				1A81D82C21AEF179009612BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

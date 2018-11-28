@@ -22,10 +22,12 @@
                 <outlet property="balanceCorrectedItem" destination="8XO-As-Ozt" id="UPd-Sn-UrB"/>
                 <outlet property="disableBallastItem" destination="rFj-U3-MSg" id="u3G-nO-Dj8"/>
                 <outlet property="launchAtLoginItem" destination="Hva-YQ-ESE" id="8ak-WP-nTn"/>
-                <outlet property="statusMenu" destination="8GQ-Qj-wfB" id="QD4-Mw-Jpd"/>
+                <outlet property="runningInBackgroundWindow" destination="2XB-kv-nsM" id="20V-R3-10E"/>
+                <outlet property="runningInBackgroundWindowIcon" destination="WRM-1L-0Rs" id="3Km-Zy-H9k"/>
+                <outlet property="statusMenu" destination="8GQ-Qj-wfB" id="XFX-Kc-ePL"/>
             </connections>
         </customObject>
-        <window title="About Ballast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="5y2-P8-0cD">
+        <window title="About Ballast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="5y2-P8-0cD">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="480" height="270"/>
@@ -105,6 +107,12 @@
                         <action selector="resetCorrectionCountClicked:" target="KZu-Ba-O5Y" id="wdE-Mb-cAo"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Hide Menu Bar Icon" id="d0L-Io-jri" userLabel="Hide Menu Bar Icon">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="hideStatusMenuIcon:" target="KZu-Ba-O5Y" id="Soq-bL-cUK"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="SCp-cz-BtN"/>
                 <menuItem title="About" id="8Pg-AB-FRZ">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -121,5 +129,63 @@
             </items>
             <point key="canvasLocation" x="133.5" y="142.5"/>
         </menu>
+        <window title="Ballast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="2XB-kv-nsM" userLabel="Running in Background Menu">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="283" y="305" width="480" height="305"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="qUr-df-dfQ">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="305"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-wb-mTH">
+                        <rect key="frame" x="85" y="149" width="310" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Ballast is currently running in the background and keeping your balance centered." id="CoA-kL-aIv">
+                            <font key="font" size="14" name=".SFNSText"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQM-4o-phB">
+                        <rect key="frame" x="104" y="68" width="273" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Show app in menu bar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vUR-u2-zJB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="stopRunningInBackgroundClicked:" target="KZu-Ba-O5Y" id="h5B-jt-PR1"/>
+                        </connections>
+                    </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qJ6-zY-wIa">
+                        <rect key="frame" x="91" y="103" width="304" height="42"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="The app's menu bar icon is hidden." id="J2C-cf-1wr">
+                            <font key="font" size="14" name=".SFNSText"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bim-Je-5cY">
+                        <rect key="frame" x="104" y="33" width="273" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Or keep app hidden in background" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="juW-i4-eXo">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="keepRunningInBackgroundClicked:" target="KZu-Ba-O5Y" id="GYT-PS-Qaa"/>
+                        </connections>
+                    </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRM-1L-0Rs">
+                        <rect key="frame" x="216" y="216" width="48" height="48"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="tHH-Fb-7j1"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="139" y="695.5"/>
+        </window>
     </objects>
 </document>

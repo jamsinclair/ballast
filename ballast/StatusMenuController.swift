@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import LaunchAtLogin
 import os.log
 import Repeat
 
@@ -26,7 +25,6 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var balanceCorrectedItem: NSMenuItem!
     @IBOutlet weak var disableBallastItem: NSMenuItem!
-    @IBOutlet weak var launchAtLoginItem: NSMenuItem!
     @IBOutlet weak var aboutWindow: NSWindow!
     @IBOutlet weak var runningInBackgroundWindow: NSWindow!
     @IBOutlet weak var runningInBackgroundWindowIcon: NSImageView!
@@ -69,7 +67,6 @@ class StatusMenuController: NSObject {
             self.toggleRunInBackground(true);
         }
 
-        self.updateLaunchAtLoginItemState()
         self.startBalanceObserving()
         self.updateBalanceCorrectedItemTitle()
 
@@ -100,9 +97,17 @@ class StatusMenuController: NSObject {
             updateBalanceCorrectedCount()
             // @TODO error handling for when set fails?
             let _ = AudioAPI.setDeviceBalance(deviceID: currentDefaultDeviceID, balance: centerBalance)
-            os_log("Successfully centered default device Balance")
+            if #available(OSX 10.12, *) {
+                os_log("Successfully centered default device Balance")
+            } else {
+                // Fallback on earlier versions
+            }
         } else {
-            os_log("Skip centering balance, already centered")
+            if #available(OSX 10.12, *) {
+                os_log("Skip centering balance, already centered")
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     
@@ -117,7 +122,11 @@ class StatusMenuController: NSObject {
     }
 
     private func toggleStatusMenuIcon (show: Bool) {
-        statusItem.isVisible = show
+        if #available(OSX 10.12, *) {
+            statusItem.isVisible = show
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     private func updateBalanceCorrectedItemTitle () {
@@ -134,10 +143,6 @@ class StatusMenuController: NSObject {
 
         updateBalanceCorrectedItemTitle()
     }
-
-    private func updateLaunchAtLoginItemState () {
-        launchAtLoginItem.state = LaunchAtLogin.isEnabled ? NSControl.StateValue.on : NSControl.StateValue.off
-    }
     
     private func updateDisabledState () {
         disableBallastItem.state = self.isCenteringEnabled ? NSControl.StateValue.off : NSControl.StateValue.on
@@ -146,13 +151,6 @@ class StatusMenuController: NSObject {
     private func toggleRunInBackground (_ toggle: Bool) {
         UserDefaults.standard.set(toggle, forKey: runInBackgroundKey)
         self.toggleStatusMenuIcon(show: !toggle)
-    }
-
-    @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
-        LaunchAtLogin.isEnabled = !LaunchAtLogin.isEnabled
-        LaunchAtLogin.isEnabled ? os_log("LaunchAtLogin is now enabled") : os_log("LaunchAtLogin is now disabled")
-
-        self.updateLaunchAtLoginItemState()
     }
     
     @IBAction func centerBalanceClicked(_ sender: NSMenuItem) {
@@ -199,7 +197,11 @@ class StatusMenuController: NSObject {
 
     @IBAction func viewOnGitHubClicked(_ sender: NSButton) {
         if let url = URL(string: "https://github.com/jamsinclair/ballast"), NSWorkspace.shared.open(url) {
-            os_log("Github link was successfully opened", type: .debug)
+            if #available(OSX 10.12, *) {
+                os_log("Github link was successfully opened", type: .debug)
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
     

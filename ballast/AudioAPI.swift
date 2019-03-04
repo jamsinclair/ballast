@@ -37,7 +37,11 @@ class AudioAPI {
         let result: OSStatus = AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, 0, nil, &size, &deviceID)
         
         if (kAudioHardwareNoError != result) {
-            os_log("Error getting default device id. Status code of: %@", result)
+            if #available(OSX 10.12, *) {
+                os_log("Error getting default device id. Status code of: %@", result)
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         return deviceID
@@ -50,7 +54,11 @@ class AudioAPI {
         let result: OSStatus = AudioObjectGetPropertyData(deviceID, &AudioAddress.masterBalance, 0, nil, &size, &balanceValue)
         
         if (kAudioHardwareNoError != result) {
-            os_log("Error getting default device balance. Status code of: %@", result)
+            if #available(OSX 10.12, *) {
+                os_log("Error getting default device balance. Status code of: %@", result)
+            } else {
+                // Fallback on earlier versions
+            }
             // Pretend the device is centered
             balanceValue = 0.5
         }

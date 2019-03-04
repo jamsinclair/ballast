@@ -21,7 +21,6 @@
                 <outlet property="aboutWindowVersionText" destination="yHh-2G-vgQ" id="5gT-8K-hr0"/>
                 <outlet property="balanceCorrectedItem" destination="8XO-As-Ozt" id="UPd-Sn-UrB"/>
                 <outlet property="disableBallastItem" destination="rFj-U3-MSg" id="u3G-nO-Dj8"/>
-                <outlet property="launchAtLoginItem" destination="Hva-YQ-ESE" id="8ak-WP-nTn"/>
                 <outlet property="runningInBackgroundWindow" destination="2XB-kv-nsM" id="20V-R3-10E"/>
                 <outlet property="runningInBackgroundWindowIcon" destination="WRM-1L-0Rs" id="3Km-Zy-H9k"/>
                 <outlet property="statusMenu" destination="8GQ-Qj-wfB" id="XFX-Kc-ePL"/>
@@ -87,12 +86,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="disableClicked:" target="KZu-Ba-O5Y" id="U1n-fD-aBj"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Launch at Login" id="Hva-YQ-ESE">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="launchAtLoginClicked:" target="KZu-Ba-O5Y" id="NXo-E2-dNR"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Center Balance" id="PEm-sT-13n">

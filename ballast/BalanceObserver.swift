@@ -18,12 +18,20 @@ extension Notification.Name {
 
 struct AudioListener {
     static var outputDevice: AudioObjectPropertyListenerProc = {_, _, _, _ in
-        os_log("[AudioListener]: Output Device Changed", type: .debug)
+        if #available(OSX 10.12, *) {
+            os_log("[AudioListener]: Output Device Changed", type: .debug)
+        } else {
+            // Fallback on earlier versions
+        }
         NotificationCenter.default.post(name: .audioOutputDeviceDidChange, object: nil)
         return 0
     }
     static var balance: AudioObjectPropertyListenerProc = {_, _, _, _ in
-        os_log("[AudioListener]: Balance Changed", type: .debug)
+        if #available(OSX 10.12, *) {
+            os_log("[AudioListener]: Balance Changed", type: .debug)
+        } else {
+            // Fallback on earlier versions
+        }
         NotificationCenter.default.post(name: .audioBalanceDidChange, object: nil)
         return 0
     }
@@ -87,20 +95,36 @@ class BalanceObserver: NSObject {
     }
     
     @objc func handleNotification(notification: Notification) {
-        os_log("[BalanceObserver]: Got us a notification", type: .debug)
+        if #available(OSX 10.12, *) {
+            os_log("[BalanceObserver]: Got us a notification", type: .debug)
+        } else {
+            // Fallback on earlier versions
+        }
         
         switch notification.name {
         case .audioBalanceDidChange:
-            os_log("[BalanceObserver]: Balance notification received", type: .debug)
+            if #available(OSX 10.12, *) {
+                os_log("[BalanceObserver]: Balance notification received", type: .debug)
+            } else {
+                // Fallback on earlier versions
+            }
             self.balanceChangeHandler!()
             break
         case .audioOutputDeviceDidChange:
-            os_log("[BalanceObserver]: Output Device notification received", type: .debug)
+            if #available(OSX 10.12, *) {
+                os_log("[BalanceObserver]: Output Device notification received", type: .debug)
+            } else {
+                // Fallback on earlier versions
+            };
             self.balanceChangeHandler!()
             self.updateBalanceListener()
             break
         default :
-            os_log("[BalanceObserver] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
+            if #available(OSX 10.12, *) {
+                os_log("[BalanceObserver] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }

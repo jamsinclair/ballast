@@ -139,6 +139,7 @@
 				TargetAttributes = {
 					45EC38DD1F9F510200C20FBB = {
 						CreatedOnToolsVersion = 9.0.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -343,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nz.jamsinclair.ballast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -364,7 +365,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nz.jamsinclair.ballast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

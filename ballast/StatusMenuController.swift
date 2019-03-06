@@ -47,7 +47,7 @@ class StatusMenuController: NSObject {
     }
     
     override func awakeFromNib() {
-        let icon = NSImage(named: NSImage.Name(rawValue: "statusIcon"))
+        let icon = NSImage(named: "statusIcon")
         
         // Update shared instance of Status Menu Controller
         // @todo Must be a better way of doing this
@@ -56,7 +56,7 @@ class StatusMenuController: NSObject {
         // Update Icons
         icon?.isTemplate = true
         statusItem.image = icon
-        runningInBackgroundWindowIcon.image = NSImage(named: NSImage.Name(rawValue: "AppIcon"))
+        runningInBackgroundWindowIcon.image = NSImage(named: "AppIcon")
 
 
         statusItem.menu = statusMenu

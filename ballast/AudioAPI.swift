@@ -37,7 +37,7 @@ class AudioAPI {
         let result: OSStatus = AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, 0, nil, &size, &deviceID)
         
         if (kAudioHardwareNoError != result) {
-            os_log("Error getting default device id. Status code of: %@", result)
+            os_log("Error getting default device id. Status code of: %d", result)
         }
         
         return deviceID
@@ -50,7 +50,7 @@ class AudioAPI {
         let result: OSStatus = AudioObjectGetPropertyData(deviceID, &AudioAddress.masterBalance, 0, nil, &size, &balanceValue)
         
         if (kAudioHardwareNoError != result) {
-            os_log("Error getting default device balance. Status code of: %@", result)
+             os_log("Error getting default device balance. Status code of: %d", result)
             // Pretend the device is centered
             balanceValue = 0.5
         }

@@ -1,4 +1,5 @@
 os: osx
+osx_image: xcode10
 language: swift
 install:
 - brew install carthage

@@ -8,13 +8,18 @@ Ever noticed your audio not quite right? Only to discover your audio balance sli
 
 This free app keeps your balance stable and center. Lives in your Menu Bar.
 
-<img width="292" alt="Ballast App Closed" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-closed.png">
-<img width="292" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-open.png">
+<img width="292" alt="Ballast App Closed" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-closed.jpg">
+<img width="292" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/ballast-open.jpg">
 
 ## Installation
-👉 Download Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases/latest) (macOS 10.12 or later required)
 
+### From the web
+👉 Download Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases/latest) (macOS 10.12 or later required)
 📝 Copy `ballast.app` to your Applications folder.
+
+### From the command line
+ℹ️ Requires [homebrew](https://brew.sh/) to be installed
+🐚 Run `brew cask install ballast`
 
 ⚠️ You will likely need to give permission to open app from unidentified developer. See: https://support.apple.com/kb/ph25088
 
@@ -22,7 +27,7 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
 - 😴 Idles in the background, only activated on system audio changes
 - 📝 Keep track of how many times your balance drifts
 - 🚀 Option to launch at login
-- 🙅‍♀️ Option to disable functionality
+- 👻 Hide menu bar icon
 
 ## FAQ
 
@@ -35,7 +40,11 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
   Two options:
   1. Quit the app from the menu bar option<br>
   OR
-  1. Disable the app from the menu bar option
+  1. Disable the app with the menu bar option
+
+- **After hiding the menu bar icon, how do I make it reappear?**<br>
+  Open `ballast.app` from your Applications folder or open via spotlight, alfred etc. A window should be displayed with an option to restore the menu bar icon or keep hidden.<br>
+  <img width="300" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/restore-window.jpg">
 
 - **I found a bug or problem?**<br>
   Great work Sherlock! 🕵️‍♂️ It’s elementary. Please [open an issue](https://github.com/jamsinclair/ballast/issues/new) on this GitHub repo. Or submit a Pull Request 🙇‍♀️

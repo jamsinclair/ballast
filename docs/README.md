@@ -13,15 +13,17 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
 
 ## Installation
 
+⚠️ You will likely need to give permission to open app from unidentified developer. See: https://support.apple.com/kb/ph25088
+
 ### From the web
 👉 Download Zip from the [latest release page](https://github.com/jamsinclair/ballast/releases/latest) (macOS 10.12 or later required)
+
 📝 Copy `ballast.app` to your Applications folder.
 
 ### From the command line
 ℹ️ Requires [homebrew](https://brew.sh/) to be installed
-🐚 Run `brew cask install ballast`
 
-⚠️ You will likely need to give permission to open app from unidentified developer. See: https://support.apple.com/kb/ph25088
+🐚 Run `brew cask install ballast`
 
 ## Features
 - 😴 Idles in the background, only activated on system audio changes
@@ -43,7 +45,8 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
   1. Disable the app with the menu bar option
 
 - **After hiding the menu bar icon, how do I make it reappear?**<br>
-  Open `ballast.app` from your Applications folder or open via spotlight, alfred etc. A window should be displayed with an option to restore the menu bar icon or keep hidden.<br>
+  Open `ballast.app` from your Applications folder or open via spotlight, alfred etc. A window should be displayed with an option to restore the menu bar icon or keep hidden.
+
   <img width="300" alt="Ballast App Open" src="https://github.com/jamsinclair/ballast/raw/master/screenshots/restore-window.jpg">
 
 - **I found a bug or problem?**<br>

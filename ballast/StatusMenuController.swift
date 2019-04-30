@@ -100,9 +100,13 @@ class StatusMenuController: NSObject {
             updateBalanceCorrectedCount()
             // @TODO error handling for when set fails?
             let _ = AudioAPI.setDeviceBalance(deviceID: currentDefaultDeviceID, balance: centerBalance)
+            #if DEBUG
             os_log("Successfully centered default device Balance")
+            #endif
         } else {
+            #if DEBUG
             os_log("Skip centering balance, already centered")
+            #endif
         }
     }
     
@@ -199,7 +203,9 @@ class StatusMenuController: NSObject {
 
     @IBAction func viewOnGitHubClicked(_ sender: NSButton) {
         if let url = URL(string: "https://github.com/jamsinclair/ballast"), NSWorkspace.shared.open(url) {
+            #if DEBUG
             os_log("Github link was successfully opened", type: .debug)
+            #endif
         }
     }
     

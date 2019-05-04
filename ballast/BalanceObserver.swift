@@ -18,12 +18,16 @@ extension Notification.Name {
 
 struct AudioListener {
     static var outputDevice: AudioObjectPropertyListenerProc = {_, _, _, _ in
+        #if DEBUG
         os_log("[AudioListener]: Output Device Changed", type: .debug)
+        #endif
         NotificationCenter.default.post(name: .audioOutputDeviceDidChange, object: nil)
         return 0
     }
     static var balance: AudioObjectPropertyListenerProc = {_, _, _, _ in
+        #if DEBUG
         os_log("[AudioListener]: Balance Changed", type: .debug)
+        #endif
         NotificationCenter.default.post(name: .audioBalanceDidChange, object: nil)
         return 0
     }
@@ -87,20 +91,28 @@ class BalanceObserver: NSObject {
     }
     
     @objc func handleNotification(notification: Notification) {
+        #if DEBUG
         os_log("[BalanceObserver]: Got us a notification", type: .debug)
+        #endif
         
         switch notification.name {
         case .audioBalanceDidChange:
+            #if DEBUG
             os_log("[BalanceObserver]: Balance notification received", type: .debug)
+            #endif
             self.balanceChangeHandler!()
             break
         case .audioOutputDeviceDidChange:
+            #if DEBUG
             os_log("[BalanceObserver]: Output Device notification received", type: .debug)
+            #endif
             self.balanceChangeHandler!()
             self.updateBalanceListener()
             break
         default :
+            #if DEBUG
             os_log("[BalanceObserver] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
+            #endif
         }
     }
 }

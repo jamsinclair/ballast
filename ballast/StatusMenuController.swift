@@ -31,6 +31,7 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var runningInBackgroundWindow: NSWindow!
     @IBOutlet weak var runningInBackgroundWindowIcon: NSImageView!
     @IBOutlet weak var aboutWindowVersionText: NSTextField!
+    @IBOutlet weak var aboutCopyrightText: NSTextField!
     
     var isCenteringEnabled = true
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -64,6 +65,11 @@ class StatusMenuController: NSObject {
 
         aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
         
+        let date = Date()
+        let calendar = Calendar.current
+        let year = String(calendar.component(.year, from: date))
+        aboutCopyrightText.stringValue = aboutCopyrightText.stringValue.replacingOccurrences(of: "[year]", with: year)
+
         // Continue hiding status menu icon, if set to run in background
         if (self.isRunningInBackground()) {
             self.toggleRunInBackground(true);

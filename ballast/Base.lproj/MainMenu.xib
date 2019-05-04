@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="KZu-Ba-O5Y" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="ballast" customModuleProvider="target">
             <connections>
+                <outlet property="aboutCopyrightText" destination="nrM-0a-Sr4" id="mDa-ft-YJB"/>
                 <outlet property="aboutWindow" destination="5y2-P8-0cD" id="5a7-qd-6m1"/>
                 <outlet property="aboutWindowVersionText" destination="yHh-2G-vgQ" id="5gT-8K-hr0"/>
                 <outlet property="balanceCorrectedItem" destination="8XO-As-Ozt" id="UPd-Sn-UrB"/>
@@ -59,7 +60,7 @@
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nrM-0a-Sr4">
                         <rect key="frame" x="143" y="169" width="215" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Copyright (c) 2018 James Sinclair" id="vpv-lb-shv">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Copyright (c) [year] James Sinclair" id="vpv-lb-shv">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

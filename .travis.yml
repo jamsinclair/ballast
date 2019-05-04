@@ -7,8 +7,8 @@ install:
 script:
 - xcodebuild -configuration Release build
 before_deploy:
-- git clone https://github.com/steakknife/unsign.git
-- cd unsign && make && cd ../
+- git clone https://github.com/jamsinclair/unsign.git
+- cd unsign && make 64_ONLY=1 && cd ../
 - export APP_NAME=ballast.app
 - export ZIP_NAME=ballast-$TRAVIS_BRANCH.zip
 - mkdir ./travis-build

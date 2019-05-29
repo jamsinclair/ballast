@@ -1,5 +1,15 @@
 # Ballast
 
+## Update 2019-05-29
+
+My motivations for creating this project were to solve my frustation with balance drift and my reluctance to spend $5 on an app that tried to solve this. 
+
+I am pleased to see that Tunabelly Software are now releasing their software for free. They have a more polished and reliable app than this project. You may want to use their great work:
+
+https://www.tunabellysoftware.com/balance_lock/
+
+--------------------
+
 > Keep your audio balance from drifting!
 
 There is, *still*, a long standing MacOS bug where your balance may drift when volume buttons are pressed while CPU is under heavy load 🤷‍♀️.

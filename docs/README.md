@@ -10,7 +10,7 @@ https://www.tunabellysoftware.com/balance_lock/
 
 > Keep your audio balance from drifting!
 
-There is, *still*, a long standing MacOS bug where your balance may drift when volume buttons are pressed while CPU is under heavy load 🤷‍♀️.
+There is, *still*, a long standing MacOS bug where your balance may drift when volume buttons are pressed while CPU is under heavy load 🤷‍♀️ (Also [charging your Macbook on the left side can cause heavy CPU usage](https://apple.stackexchange.com/questions/363337/how-to-find-cause-of-high-kernel-task-cpu-usage/363933)).
 
 Ever noticed your audio not quite right? Only to discover your audio balance slightly off 😔
 

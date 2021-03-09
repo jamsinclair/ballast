@@ -31,7 +31,7 @@ This free app keeps your balance stable and center. Lives in your Menu Bar.
 ### From the command line
 ℹ️ Requires [homebrew](https://brew.sh/) to be installed
 
-🐚 Run `brew cask install ballast`
+🐚 Run `brew install ballast`
 
 ## Features
 - 😴 Idles in the background, only activated on system audio changes

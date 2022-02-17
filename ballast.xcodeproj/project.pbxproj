@@ -3,18 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A7C470D213D6DBF00B25E04 /* Repeat.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 1A7C470B213D6DBF00B25E04 /* Repeat.framework.dSYM */; };
-		1A7C4710213D6E5300B25E04 /* Repeat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1A81D82D21AEF179009612BB /* Repeat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C470C213D6DBF00B25E04 /* Repeat.framework */; };
-		1A8352622125281A0087AA4E /* AudioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8352612125281A0087AA4E /* AudioAPI.swift */; };
+		1A27E52F27AE57A80028DD5E /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 1A27E52E27AE57A80028DD5E /* LaunchAtLogin */; };
+		1A27E53227AE57FD0028DD5E /* Repeat in Frameworks */ = {isa = PBXBuildFile; productRef = 1A27E53127AE57FD0028DD5E /* Repeat */; };
 		1A95F97821258A9B00F1E21E /* BalanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A95F97721258A9B00F1E21E /* BalanceObserver.swift */; };
 		1AA48E192125D576006DFA25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45EC38E31F9F510200C20FBB /* Assets.xcassets */; };
-		456EF1C31FA55CBB0042FB56 /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */; };
-		456EF1C41FA55CBB0042FB56 /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1ADF8AD527BDE50F0054ADA4 /* SimplyCoreAudio in Frameworks */ = {isa = PBXBuildFile; productRef = 1ADF8AD427BDE50F0054ADA4 /* SimplyCoreAudio */; };
 		458662091FA1F15D00D0C6D2 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */; };
 		45EC38E21F9F510200C20FBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45EC38E11F9F510200C20FBB /* AppDelegate.swift */; };
 		45EC38E71F9F510200C20FBB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45EC38E51F9F510200C20FBB /* MainMenu.xib */; };
@@ -27,8 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				456EF1C41FA55CBB0042FB56 /* LaunchAtLogin.framework in Embed Frameworks */,
-				1A7C4710213D6E5300B25E04 /* Repeat.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,11 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A7C470B213D6DBF00B25E04 /* Repeat.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Repeat.framework.dSYM; path = Carthage/Build/Mac/Repeat.framework.dSYM; sourceTree = "<group>"; };
-		1A7C470C213D6DBF00B25E04 /* Repeat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Repeat.framework; path = Carthage/Build/Mac/Repeat.framework; sourceTree = "<group>"; };
-		1A8352612125281A0087AA4E /* AudioAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioAPI.swift; sourceTree = "<group>"; };
 		1A95F97721258A9B00F1E21E /* BalanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceObserver.swift; sourceTree = "<group>"; };
-		456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = "<group>"; };
 		458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		45EC38DE1F9F510200C20FBB /* ballast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ballast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45EC38E11F9F510200C20FBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,14 +46,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				456EF1C31FA55CBB0042FB56 /* LaunchAtLogin.framework in Frameworks */,
-				1A81D82D21AEF179009612BB /* Repeat.framework in Frameworks */,
+				1ADF8AD527BDE50F0054ADA4 /* SimplyCoreAudio in Frameworks */,
+				1A27E53227AE57FD0028DD5E /* Repeat in Frameworks */,
+				1A27E52F27AE57A80028DD5E /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A27E53627AF56FC0028DD5E /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		1A81D82C21AEF179009612BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,9 +72,7 @@
 		45EC38D51F9F510200C20FBB = {
 			isa = PBXGroup;
 			children = (
-				1A7C470C213D6DBF00B25E04 /* Repeat.framework */,
-				1A7C470B213D6DBF00B25E04 /* Repeat.framework.dSYM */,
-				456EF1C21FA55CBB0042FB56 /* LaunchAtLogin.framework */,
+				1A27E53627AF56FC0028DD5E /* Packages */,
 				45EC38E01F9F510200C20FBB /* ballast */,
 				45EC38DF1F9F510200C20FBB /* Products */,
 				1A81D82C21AEF179009612BB /* Frameworks */,
@@ -94,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				45EC38E11F9F510200C20FBB /* AppDelegate.swift */,
-				1A8352612125281A0087AA4E /* AudioAPI.swift */,
 				1A95F97721258A9B00F1E21E /* BalanceObserver.swift */,
 				458662081FA1F15D00D0C6D2 /* StatusMenuController.swift */,
 				45EC38E31F9F510200C20FBB /* Assets.xcassets */,
@@ -116,13 +112,18 @@
 				45EC38DB1F9F510200C20FBB /* Frameworks */,
 				45EC38DC1F9F510200C20FBB /* Resources */,
 				456EF1C51FA55CBB0042FB56 /* Embed Frameworks */,
-				456EF1C11FA55C170042FB56 /* ShellScript */,
+				1ADF8ACF27BDDD740054ADA4 /* Copy “Launch at Login Helper” */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ballast;
+			packageProductDependencies = (
+				1A27E52E27AE57A80028DD5E /* LaunchAtLogin */,
+				1A27E53127AE57FD0028DD5E /* Repeat */,
+				1ADF8AD427BDE50F0054ADA4 /* SimplyCoreAudio */,
+			);
 			productName = ballast;
 			productReference = 45EC38DE1F9F510200C20FBB /* ballast.app */;
 			productType = "com.apple.product-type.application";
@@ -140,7 +141,6 @@
 					45EC38DD1F9F510200C20FBB = {
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -153,6 +153,11 @@
 				Base,
 			);
 			mainGroup = 45EC38D51F9F510200C20FBB;
+			packageReferences = (
+				1A27E52D27AE57A80028DD5E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				1A27E53027AE57FD0028DD5E /* XCRemoteSwiftPackageReference "Repeat" */,
+				1ADF8AD327BDE50F0054ADA4 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */,
+			);
 			productRefGroup = 45EC38DF1F9F510200C20FBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AA48E192125D576006DFA25 /* Assets.xcassets in Resources */,
-				1A7C470D213D6DBF00B25E04 /* Repeat.framework.dSYM in Resources */,
 				45EC38E71F9F510200C20FBB /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,18 +180,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		456EF1C11FA55C170042FB56 /* ShellScript */ = {
+		1ADF8ACF27BDDD740054ADA4 /* Copy “Launch at Login Helper” */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+			);
+			name = "Copy “Launch at Login Helper”";
+			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh\n";
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -199,7 +208,6 @@
 				458662091FA1F15D00D0C6D2 /* StatusMenuController.swift in Sources */,
 				1A95F97821258A9B00F1E21E /* BalanceObserver.swift in Sources */,
 				45EC38E21F9F510200C20FBB /* AppDelegate.swift in Sources */,
-				1A8352622125281A0087AA4E /* AudioAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +256,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -267,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -307,7 +315,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -320,10 +328,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -332,15 +341,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ballast/ballast.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ballast/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nz.jamsinclair.ballast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -353,15 +364,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ballast/ballast.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ballast/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				PRODUCT_BUNDLE_IDENTIFIER = nz.jamsinclair.ballast;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -391,6 +404,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A27E52D27AE57A80028DD5E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		1A27E53027AE57FD0028DD5E /* XCRemoteSwiftPackageReference "Repeat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/Repeat.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
+		1ADF8AD327BDE50F0054ADA4 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rnine/SimplyCoreAudio.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A27E52E27AE57A80028DD5E /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A27E52D27AE57A80028DD5E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+		1A27E53127AE57FD0028DD5E /* Repeat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A27E53027AE57FD0028DD5E /* XCRemoteSwiftPackageReference "Repeat" */;
+			productName = Repeat;
+		};
+		1ADF8AD427BDE50F0054ADA4 /* SimplyCoreAudio */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1ADF8AD327BDE50F0054ADA4 /* XCRemoteSwiftPackageReference "SimplyCoreAudio" */;
+			productName = SimplyCoreAudio;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 45EC38D61F9F510200C20FBB /* Project object */;
 }

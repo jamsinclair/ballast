@@ -1,0 +1,22 @@
+name: Build & Release
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build
+        run: |
+          xcodebuild -configuration Release build \
+            TEAM_ID='' \
+            DEVELOPMENT_TEAM='' \
+            CODE_SIGNING_ALLOWED='NO' \
+            CODE_SIGNING_REQUIRED='NO' \
+            CODE_SIGN_IDENTITY='' \
+            CODE_SIGN_STYLE=''

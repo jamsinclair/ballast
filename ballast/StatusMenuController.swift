@@ -10,6 +10,8 @@ import Cocoa
 import LaunchAtLogin
 import os.log
 import Repeat
+import SimplyCoreAudio
+import AudioToolbox
 
 extension Bundle {
     var releaseVersionNumber: String? {
@@ -32,31 +34,32 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var runningInBackgroundWindowIcon: NSImageView!
     @IBOutlet weak var aboutWindowVersionText: NSTextField!
     @IBOutlet weak var aboutCopyrightText: NSTextField!
-    
+
     var isCenteringEnabled = true
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let centerBalance: Float32 = 0.5
-    let balanceObserver = BalanceObserver()
+    var balanceObserver = BalanceObserver()
     let debouncedCenterDefaultDeviceBalance = Debouncer(.seconds(1.1))
+    let simplyCA = SimplyCoreAudio()
 
     // User Defaults Keys
     let balanceCorrectedKey = "balanceChanged"
     let runInBackgroundKey = "runInBackground"
-    
+
     deinit {
         balanceObserver.stopObserving()
     }
-    
+
     override func awakeFromNib() {
         let icon = NSImage(named: "statusIcon")
-        
+
         // Update shared instance of Status Menu Controller
         // @todo Must be a better way of doing this
         sharedStatusMenuController = self
 
         // Update Icons
         icon?.isTemplate = true
-        statusItem.image = icon
+        statusItem.button?.image = icon
         runningInBackgroundWindowIcon.image = NSImage(named: "AppIcon")
 
 
@@ -64,7 +67,7 @@ class StatusMenuController: NSObject {
         isCenteringEnabled = true
 
         aboutWindowVersionText.stringValue = "Ballast @ Version \(Bundle.main.releaseVersionNumber!)"
-        
+
         let date = Date()
         let calendar = Calendar.current
         let year = String(calendar.component(.year, from: date))
@@ -99,28 +102,27 @@ class StatusMenuController: NSObject {
     }
 
     @objc func centerDefaultDeviceBalance () {
-        let currentDefaultDeviceID = AudioAPI.getDefaultDevice()
-        let deviceBalance = AudioAPI.getDeviceBalance(deviceID: currentDefaultDeviceID)
+        let currentDefaultDevice = simplyCA.defaultOutputDevice
+
+        if (!(currentDefaultDevice?.canSetVirtualMainBalance(scope: .output) ?? false)) {
+            os_log("Cannot set balance for device", type: .debug)
+            return
+        }
+
+        let deviceBalance = currentDefaultDevice?.virtualMainBalance(scope: .output)
 
         if (deviceBalance != centerBalance) {
             updateBalanceCorrectedCount()
-            // @TODO error handling for when set fails?
-            let _ = AudioAPI.setDeviceBalance(deviceID: currentDefaultDeviceID, balance: centerBalance)
-            #if DEBUG
-            os_log("Successfully centered default device Balance")
-            #endif
+            currentDefaultDevice?.setVirtualMainBalance(0.5, scope: .output)
+            os_log("Successfully centered default device Balance", type: .debug)
         } else {
-            #if DEBUG
-            os_log("Skip centering balance, already centered")
-            #endif
+            os_log("Skip centering balance, already centered", type: .debug)
         }
     }
-    
+
     private func startBalanceObserving () {
         self.centerDefaultDeviceBalance()
 
-        // Start Observeration of Balance, callback gets called whenever balance changes
-        // @Note for some reason balance event also gets invoked when volume is changed?
         balanceObserver.startObserving(onChange: { () in
             self.debouncedCenterDefaultDeviceBalance.call()
         })
@@ -181,11 +183,11 @@ class StatusMenuController: NSObject {
             balanceCorrectedItem.title = "Ballast is Disabled"
         }
     }
-    
+
     @IBAction func keepRunningInBackgroundClicked(_ sender: NSButton) {
         runningInBackgroundWindow?.close()
     }
-    
+
     @IBAction func stopRunningInBackgroundClicked(_ sender: NSButton) {
         runningInBackgroundWindow?.close()
         self.toggleRunInBackground(false)

@@ -10,109 +10,91 @@ import Foundation
 import AVFoundation
 import CoreAudio
 import os.log
+import SimplyCoreAudio
+@_implementationOnly import SimplyCoreAudioC
+
+struct AudioAddress {
+    static var mainBalance = AudioObjectPropertyAddress(mSelector: kAudioHardwareServiceDeviceProperty_VirtualMainBalance,
+                                                          mScope: kAudioDevicePropertyScopeOutput,
+                                                          mElement: kAudioObjectPropertyElementMain)
+}
 
 extension Notification.Name {
-    static let audioBalanceDidChange = Notification.Name("audioBalanceDidChange")
-    static let audioOutputDeviceDidChange = Notification.Name("audioOutputDeviceDidChange")
+    static let deviceBalanceDidChange = Notification.Name("deviceBalanceDidChange")
 }
 
 struct AudioListener {
-    static var outputDevice: AudioObjectPropertyListenerProc = {_, _, _, _ in
-        #if DEBUG
-        os_log("[AudioListener]: Output Device Changed", type: .debug)
-        #endif
-        NotificationCenter.default.post(name: .audioOutputDeviceDidChange, object: nil)
-        return 0
-    }
     static var balance: AudioObjectPropertyListenerProc = {_, _, _, _ in
-        #if DEBUG
-        os_log("[AudioListener]: Balance Changed", type: .debug)
-        #endif
-        NotificationCenter.default.post(name: .audioBalanceDidChange, object: nil)
+        NotificationCenter.default.post(name: .deviceBalanceDidChange, object: nil)
         return 0
     }
 }
 
 class BalanceObserver: NSObject {
-    var balanceDeviceID: AudioObjectID? = nil
+    var deviceObserver: NSObjectProtocol? = nil
     var balanceChangeHandler: (()->()?)? = nil
-    
+    var balanceDeviceID: AudioObjectID? = nil
+    let simplyCA = SimplyCoreAudio()
+
     override init () {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleNotification(notification:)), name: .audioBalanceDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.handleNotification(notification:)), name: .audioOutputDeviceDidChange, object: nil)
     }
 
     deinit {
         self.stopObserving()
-        NotificationCenter.default.removeObserver(self)
     }
     
     func startObserving (onChange: @escaping () -> Void) {
         self.balanceChangeHandler = onChange
-        self.updateBalanceListener()
-        self.addOutputDeviceListener()
+
+        deviceObserver = NotificationCenter.default.addObserver(forName: .defaultOutputDeviceChanged,
+                                                                object: nil,
+                                                                 queue: .main) { (notification) in
+            let currentDevice: AudioObjectID = self.simplyCA.defaultOutputDevice?.id ?? kAudioDeviceUnknown
+
+            if  currentDevice != kAudioDeviceUnknown {
+                self.updateBalanceListener(nextDeviceID: currentDevice)
+            }
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleNotification(notification:)), name: .deviceBalanceDidChange, object: nil)
     }
-    
+
     func stopObserving () {
         self.balanceChangeHandler = nil
-        
-        if (self.balanceDeviceID != nil) {
-            self.removeBalanceListener(deviceID: self.balanceDeviceID!)
+        NotificationCenter.default.removeObserver(self)
+
+        if (deviceObserver != nil) {
+            NotificationCenter.default.removeObserver(deviceObserver!)
+            deviceObserver = nil
         }
-        self.removeOutputDeviceListener()
     }
-    
-    func updateBalanceListener () {
+
+    func updateBalanceListener (nextDeviceID: AudioObjectID) {
         if (self.balanceDeviceID != nil) {
             self.removeBalanceListener(deviceID: self.balanceDeviceID!)
         }
         
-        let activeDefaultDevice = AudioAPI.getDefaultDevice()
-        self.balanceDeviceID = activeDefaultDevice
+        self.balanceDeviceID = nextDeviceID
         
         self.addBalanceListener(deviceID: self.balanceDeviceID!)
     }
-    
+
     private func addBalanceListener (deviceID: AudioObjectID) {
-        AudioObjectAddPropertyListener(deviceID, &AudioAddress.masterBalance, AudioListener.balance, nil)
+        AudioObjectAddPropertyListener(deviceID, &AudioAddress.mainBalance, AudioListener.balance, nil)
     }
-    
+
     private func removeBalanceListener (deviceID: AudioObjectID) {
-        AudioObjectRemovePropertyListener(deviceID, &AudioAddress.masterBalance, AudioListener.balance, nil)
+        AudioObjectRemovePropertyListener(deviceID, &AudioAddress.mainBalance, AudioListener.balance, nil)
     }
-    
-    private func addOutputDeviceListener () {
-        AudioObjectAddPropertyListener(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, AudioListener.outputDevice, nil)
-    }
-    
-    private func removeOutputDeviceListener () {
-        AudioObjectRemovePropertyListener(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, AudioListener.outputDevice, nil)
-    }
-    
+
     @objc func handleNotification(notification: Notification) {
-        #if DEBUG
-        os_log("[BalanceObserver]: Got us a notification", type: .debug)
-        #endif
-        
         switch notification.name {
-        case .audioBalanceDidChange:
-            #if DEBUG
-            os_log("[BalanceObserver]: Balance notification received", type: .debug)
-            #endif
+        case .deviceBalanceDidChange:
+            os_log("[Balance observer] Device balance changed", type: .debug)
             self.balanceChangeHandler!()
-            break
-        case .audioOutputDeviceDidChange:
-            #if DEBUG
-            os_log("[BalanceObserver]: Output Device notification received", type: .debug)
-            #endif
-            self.balanceChangeHandler!()
-            self.updateBalanceListener()
             break
         default :
-            #if DEBUG
-            os_log("[BalanceObserver] Unknown Notfication: %v", type: .debug, notification.name.rawValue as CVarArg)
-            #endif
+            break
         }
     }
 }

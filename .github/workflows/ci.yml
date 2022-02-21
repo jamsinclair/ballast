@@ -1,0 +1,38 @@
+name: Build And Release CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build-release:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Build
+        run: |
+          xcodebuild -scheme ballast -configuration Release build \
+            TEAM_ID='' \
+            DEVELOPMENT_TEAM='' \
+            CODE_SIGNING_ALLOWED='NO' \
+            CODE_SIGNING_REQUIRED='NO' \
+            CODE_SIGN_IDENTITY='' \
+            CODE_SIGN_STYLE=''
+      - name: Prepare Release files
+        if: ${{ startsWith(github.event.ref, 'refs/tags/') }}
+        run: |
+          OUTPUT_DIR_NAME="$(ls ~/Library/Developer/Xcode/DerivedData | grep ballast)"
+          TAG=${GITHUB_REF/refs\/tags\//}
+          APP_NAME=ballast.app
+          ZIP_NAME="ballast-$TAG.zip"
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
+          cp -r ~/Library/Developer/Xcode/DerivedData/$OUTPUT_DIR_NAME/Build/Products/Release/$APP_NAME ./
+          zip -r ./$ZIP_NAME ./$APP_NAME
+      - name: Release
+        if: ${{ startsWith(github.event.ref, 'refs/tags/') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{env.ZIP_NAME}}
